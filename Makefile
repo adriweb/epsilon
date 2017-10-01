@@ -28,6 +28,10 @@ SFLAGS += -MD -MP
 CFLAGS = -std=c99
 CXXFLAGS = -std=c++11 -fno-exceptions -fno-rtti -fno-threadsafe-statics
 
+#OTHER_FLAGS = -Wall -Wextra -Wno-unused-parameter -Werror=write-strings -Werror=format -Werror=format-security -fsanitize=address,bounds -fsanitize-undefined-trap-on-error -O0 -g3
+CFLAGS   += $(OTHER_FLAGS)
+CXXFLAGS += $(OTHER_FLAGS)
+
 products :=
 
 ifeq ($(VERBOSE),1)
@@ -86,7 +90,7 @@ products += $(dependencies)
 .SECONDARY: $(objs)
 %.$(EXE): $(objs)
 	@echo "LD      $@"
-	@$(LD) $^ $(LDFLAGS) -o $@
+	@$(LD) $^ $(LDFLAGS) -fsanitize=address,bounds -fsanitize-undefined-trap-on-error -o $@
 
 .PHONY: %_size
 %_size: %.$(EXE)
