@@ -24,10 +24,11 @@ const ToolboxNode predictionChildren[3] = {ToolboxNode(I18n::Message::Prediction
 #if LIST_ARE_DEFINED
 const ToolboxNode menu[12] = {ToolboxNode(I18n::Message::AbsCommandWithArg, I18n::Message::AbsoluteValue, I18n::Message::AbsCommand),
 #elif MATRICES_ARE_DEFINED
-const ToolboxNode menu[11] = {ToolboxNode(I18n::Message::AbsCommandWithArg, I18n::Message::AbsoluteValue, I18n::Message::AbsCommand),
+const ToolboxNode menu[12] = {ToolboxNode(I18n::Message::AbsCommandWithArg, I18n::Message::AbsoluteValue, I18n::Message::AbsCommand),
 #else
 const ToolboxNode menu[10] = {ToolboxNode(I18n::Message::AbsCommandWithArg, I18n::Message::AbsoluteValue, I18n::Message::AbsCommand),
 #endif
+  ToolboxNode(I18n::Message::ToFracCommandWithArg, I18n::Message::Frac, I18n::Message::ToFracCommand),
   ToolboxNode(I18n::Message::RootCommandWithArg, I18n::Message::NthRoot, I18n::Message::RootCommand),
   ToolboxNode(I18n::Message::LogCommandWithArg, I18n::Message::BasedLogarithm, I18n::Message::LogCommand),
   ToolboxNode(I18n::Message::Calculation, I18n::Message::Default, I18n::Message::Default, calculChildren, 4),

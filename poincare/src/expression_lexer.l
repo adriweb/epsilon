@@ -112,6 +112,7 @@ cos { poincare_expression_yylval.expression = new Cosine(); return FUNCTION; }
 cosh { poincare_expression_yylval.expression = new HyperbolicCosine(); return FUNCTION; }
 floor { poincare_expression_yylval.expression = new Floor(); return FUNCTION; }
 frac { poincare_expression_yylval.expression = new FracPart(); return FUNCTION; }
+tofrac { poincare_expression_yylval.expression = new ToFrac(); return FUNCTION; }
 gcd { poincare_expression_yylval.expression = new GreatCommonDivisor(); return FUNCTION; }
 im { poincare_expression_yylval.expression = new ImaginaryPart(); return FUNCTION; }
 int { poincare_expression_yylval.expression = new Integral(); return FUNCTION; }
