@@ -284,7 +284,7 @@
 
 // Whether to emit ARM native code
 #ifndef MICROPY_EMIT_ARM
-#define MICROPY_EMIT_ARM (0)
+#define MICROPY_EMIT_ARM (1)
 #endif
 
 // Whether to emit Xtensa native code

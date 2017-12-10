@@ -34,7 +34,7 @@
 // wrapper around everything in this file
 #if MICROPY_EMIT_ARM
 
-#include "py/asmarm.h"
+#include "asmarm.h"
 
 #define SIGNED_FIT24(x) (((x) & 0xff800000) == 0) || (((x) & 0xff000000) == 0xff000000)
 
@@ -42,7 +42,7 @@ void asm_arm_end_pass(asm_arm_t *as) {
     if (as->base.pass == MP_ASM_PASS_EMIT) {
 #ifdef __arm__
         // flush I- and D-cache
-        asm volatile(
+        __asm__ volatile(
                 "0:"
                 "mrc p15, 0, r15, c7, c10, 3\n"
                 "bne 0b\n"
@@ -342,7 +342,7 @@ void asm_arm_bcc_label(asm_arm_t *as, int cond, uint label) {
     if (SIGNED_FIT24(rel)) {
         emit(as, cond | 0xa000000 | (rel & 0xffffff));
     } else {
-        printf("asm_arm_bcc: branch does not fit in 24 bits\n");
+        //printf("asm_arm_bcc: branch does not fit in 24 bits\n");
     }
 }
 

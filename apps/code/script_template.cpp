@@ -27,25 +27,21 @@ def fibo2(n):
     return 1
   return fibo2(n-1)+fibo2(n-2))");
 
-constexpr ScriptTemplate mandelbrotScriptTemplate("mandelbrot.py", R"(# This script draws a Mandelbrot fractal set
-# N_iteration: degree of precision
-import kandinsky
-def mandelbrot(N_iteration):
-  for x in range(320):
-    for y in range(222):
-# Compute the mandelbrot sequence for the point c = (c_r, c_i) with start value z = (z_r, z_i)
-      z = complex(0,0)
-# Rescale to fit the drawing screen 320x222
-      c = complex(3.5*x/319-2.5, -2.5*y/221+1.25)
-      i = 0
-      while (i < N_iteration) and abs(z) < 2:
-        i = i + 1
-        z = z*z+c
-# Choose the color of the dot from the Mandelbrot sequence
-      rgb = int(255*i/N_iteration)
-      col = kandinsky.color(int(rgb),int(rgb*0.75),int(rgb*0.25))
-# Draw a pixel colored in 'col' at position (x,y)
-      kandinsky.set_pixel(x,y,col))");
+constexpr ScriptTemplate mandelbrotScriptTemplate("mandelbrot.py", R"(from kandinsky import set_pixel
+@micropython.viper
+def mandelbrot(W,H,N) :
+ w=2.7/(W-1)
+ h=1.87/(H-1)
+ n=255.0/N
+ for x in range(W):
+  for y in range(H):
+   z=complex(0,0)
+   c=complex(w*x-2.1,.935-h*y)
+   for j in range(N):
+    z=z*z+c
+    if abs(z)>2:
+     break
+   set_pixel(x,y,255*20*j+256))");
 
 constexpr ScriptTemplate polynomialScriptTemplate("polynomial.py", R"(from math import *
 # roots(a,b,c) computes the solutions of the equation a*x**2+b*x+c=0

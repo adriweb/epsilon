@@ -51,7 +51,9 @@ py_objs = $(addprefix python/src/py/,\
   compile.o \
   emitcommon.o \
   emitbc.o \
+  emitnative.o \
   asmbase.o \
+  asmarm.o \
   asmx64.o \
   asmx86.o \
   asmthumb.o \
@@ -136,7 +138,7 @@ py_objs = $(addprefix python/src/py/,\
 #  repl.o \
 
 py_objs += python/src/py/emitnative.o
-python/src/py/emitnative.o: CFLAGS += -DN_THUMB
+python/src/py/emitnative.o: CFLAGS += -DN_ARM
 
 #extmod_objs += $(addprefix python/src/extmod/,\
   moductypes.o \

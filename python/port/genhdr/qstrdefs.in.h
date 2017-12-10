@@ -6,6 +6,17 @@
 QCFG(BYTES_IN_HASH, 1)
 QCFG(BYTES_IN_LEN, 1)
 
+Q(native)
+Q(viper)
+Q(ViperTypeError)
+Q(uint)
+Q(ptr)
+Q(ptr8)
+Q(ptr16)
+Q(ptr32)
+Q(None)
+
+
 Q(color)
 Q(draw_string)
 Q(get_pixel)
